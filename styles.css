@@ -1,3 +1,5 @@
+@import url('https://googleapis.com');
+
 /*////////////////////////
     Table of Contents
     1. Global Styles
@@ -14,18 +16,480 @@
 
 /* ------------------------------- 1. Global Styles -------------------------------- */
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 /* ------------------------------- 2. Typography ----------------------------------- */
+
+.h1{
+    text-align: center;
+    color: white;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Merriweather', serif !important;
+    font-weight: 400;
+}
+
 
 /* ------------------------------- 3. Layout --------------------------------------- */
 
 /* --------------- 3.1 Reusables ----------------------- */
 
-/* --------------- 3.2 Other --------------------------- */
-
 /* ------------------------------- 4. Areas ---------------------------------------- */
 
 /* --------------- 4.1 Header ------------------------- */
 
+header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(135deg, #4845E4 0%, #5722CD 100%);
+    color: white;
+    padding: 40px 40px 140px 40px;
+    box-sizing: border-box;
+}
+
+header::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 0px solid transparent;
+    border-right: 100vw solid transparent;
+    border-bottom: 40px solid white;
+}
+
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 40px;
+}
+
+.navbar ul {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    gap: 30px;
+}
+
+.navbar ul li a,
+.navbar a {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: white;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.header-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 750px;
+    width: 100%;
+}
+
+header h1 {
+    font-family: 'Merriweather', serif;
+    color: white;
+    text-align: center;
+    font-size: 40px;
+    max-width: 600px;
+    line-height: 1.3;
+    letter-spacing: -0.5px;
+}
+
+header p {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    color: white;
+    font-size: 19px;
+    width: 100%;
+    margin: 0 auto 35px auto;
+}
+header button {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    background-color: #ED4385;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 12px 30px;
+    font-size: 8px;
+    border-radius: 50px;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin-bottom: 60px;
+    white-space: nowrap;
+}
+
+.header_img {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    pointer-events: none;
+}
+
+.header_img img {
+    display: block;
+    width: auto;
+    max-width: 45px;
+    height: auto;
+}
+
 /* --------------- 4.2 Introduction ------------------- */
 
+.intro-outer-container {
+    display: flex;
+    justify-content: center;
+    padding: 80px 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.intro-inner-container {
+    max-width: 740px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.intro-text{
+    font-family: 'Merriweather', serif;
+    color: #5722CD;
+    font-size: 27px;
+    font-weight: 500;
+    line-height: 1.4;
+    margin: 0 0 35px 0;
+
+}
+.intro-inner-container .question {
+    font-family: 'Roboto','sans-serif';
+    font-size: 15px;
+    font-weight: 400;
+    color: #000000;
+    text-align: center;
+    margin: 0;
+    letter-spacing: 0.3px;
+}
+
+.intro-inner-container .question a {
+    color: #5722CD !important;
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+.question a:hover {
+    color: #4845E4;
+}
+
+/* --------------- 4.3 Projects ----------------------- */
+.project-container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #F3F6F9;
+    padding: 100px 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.project-container::before {
+    content: "";
+    position: absolute;
+    top: 0; /* Plak hem strak aan de bovenkant */
+    left: 0;
+    width: 0;
+    height: 0;
+
+    /* Precies zoals je voorbeeld: andersom schuin en minder steil */
+    border-left: 0px solid transparent;
+    border-right: 100vw solid transparent;
+
+    /* Gekleurd in de grijze kleur van deze sectie zelf */
+    border-bottom: 40px solid #F3F6F9;
+
+    /* Schuif de driehoek omhoog zodat hij over de witte sectie erboven valt */
+    transform: translateY(-100%);
+}
+
+.project-container::after {
+    content: "";
+    position: absolute;
+    bottom: 0; /* Strak aan de onderkant binnen de container */
+    left: 0;
+    width: 0;
+    height: 0;
+
+    /* Omgedraaid om parallel te lopen met de bovenkant */
+    border-left: 0px solid transparent;
+    border-right: 100vw solid transparent;
+
+    /* Gekleurd in WIT (de kleur van de sectie eronder) */
+    border-bottom: 40px solid #ffffff;
+
+    /* Geen translateY meer nodig, hij snijdt nu live in het grijs */
+}
+
+.project-card {
+    display: flex ;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto 100px auto;
+    padding: 0 40px;
+    gap: 60px;
+}
+
+.project-card-reverse {
+    flex-direction: row-reverse;
+}
+
+.project-info {
+    flex: 1;
+    max-width: 440px;
+    text-align: left;
+}
+
+.project-info h2{
+    color: black;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.project-media{
+    flex:1.3;
+    display: flex;
+    flex-direction: row;
+}
+
+.image-wrapper {
+    display: block;
+    flex: 1 1 50%;
+    max-width: 550px;
+}
+
+.image-wrapper img {
+    width: 100%;
+    display: block;
+    box-shadow: 15px 25px 45px rgba(40, 44, 52, 0.22),
+            5px 8px 15px rgba(40, 44, 52, 0.15);
+}
+/* --------------- 4.4 Services ----------------------- */
+.services-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+}
+
+.services-card {
+    display: flex;
+    flex: 0 0 calc(33.333% - 27px);
+    min-width: 280px;
+    box-sizing: border-box;
+}
+
+.services-article {
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border: 1px solid #5722CD;
+    box-shadow: 0 10px 30px rgba(87, 34, 205, 0.12);
+    background-color: #ffffff;
+}
+
+.services-article img {
+    margin-bottom: 20px;
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.services-article h3 {
+    color: #5722CD;
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0 0 15px 0;
+}
+
+.services-article p {
+    margin: 0;
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+/* --------------- 4.5 Contact ----------------------- */
+.contact-section{
+    position: relative;
+    width: 100%;
+    background: linear-gradient(135deg, #4845E4 0%, #5722CD 100%);
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color:white;
+}
+
+.contact-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+
+    /* Nu trekt de onzichtbare border over de linkerkant van het scherm */
+    border-left: 100vw solid transparent;
+    border-right: 0px solid transparent;
+
+    /* Het wit sluit strak aan op de bovenkant */
+    border-top: 40px solid #ffffff;
+    border-bottom: 0px solid transparent;
+}
+
+.contact-header{
+    text-align: center;
+    margin-bottom: 30px;
+    color:white;
+}
+
+.contact-header h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color:white;
+}
+
+.contact-header p {
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    width: 100%;       /* Belangrijk: zorgt dat de groep breedte krijgt */
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-group textarea {
+    height: 180px;
+    resize: vertical;
+}
+
+.button-submit {
+    background-color: #ef4575; /* Vibrant pink/coral tone from image */
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 15px 50px;
+    border: none;
+    border-radius: 25px; /* Creates the pill-shaped button look */
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin-top: 15px;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+/* --------------- 4.6 Footer ----------------------- */
+footer{
+    color: white;
+    background-color:black;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    font-size: 12px;
+}
+
+
 /* ------------------------------- 5. Media Queries -------------------------------- */
+
+@media (max-width: 800px) {
+    .project-card {
+        gap:40px;
+        margin-bottom: 80px;
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-container {
+        padding: 100px 0 60px 0;
+    }
+
+    .project-card,
+    .project-card.reverse {
+        flex-direction: column-reverse !important;
+        align-items: flex-start;
+        gap: 30px;
+        margin-bottom: 80px;
+        padding: 0 24px;
+    }
+
+    .project-info {
+        max-width: 100%;
+    }
+
+    .image-wrapper {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .project-info h2 {
+        font-size: 26px;
+    }
+}
